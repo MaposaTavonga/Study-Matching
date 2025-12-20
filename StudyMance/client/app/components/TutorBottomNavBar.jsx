@@ -1,35 +1,40 @@
+// app/components/TutorBottomNavBar.jsx
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, TouchableOpacity, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
+export default function TutorBottomNavBar({ activeTab, onTabPress }) {
+  const navigation = useNavigation();
 
-export default function TutorBottomNavBar({ activeTab, onTabPress, navigation }) {
-const tabs = [
-  { name: 'Home', route: 'TutHome', icon: 'home-outline', activeIcon: 'home' },
-  { name: 'Students', route: 'tutStudents', icon: 'people-outline', activeIcon: 'people' },
-  { name: 'Groups', route: 'TutGroups', icon: 'layers-outline', activeIcon: 'layers' },
-  { name: 'Profile', route: 'TutProfile', icon: 'person-outline', activeIcon: 'person' },
-];
+  const tabs = [
+    { name: 'Home', label: '🏠' },
+    { name: 'Sessions', label: '📅' },
+    { name: 'Messages', label: '💬' },
+    { name: 'Profile', label: '👤' },
+  ];
+
   return (
-    <View style={{ flexDirection: 'row', backgroundColor: '#fff', height: 70, justifyContent: 'space-around', alignItems: 'center' }}>
-      {tabs.map((tab) => {
+    <View style={{
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      paddingVertical: 12,
+      backgroundColor: '#fff',
+      borderTopWidth: 1,
+      borderColor: '#E5E7EB',
+    }}>
+      {tabs.map(tab => {
         const isActive = activeTab === tab.name;
-
         return (
           <TouchableOpacity
             key={tab.name}
-            style={{ alignItems: 'center', flex: 1 }}
             onPress={() => {
               onTabPress(tab.name);
-              navigation.navigate(tab.route); // <-- React Navigation
+              navigation.navigate(tab.name);
             }}
+            style={{ alignItems: 'center' }}
           >
-            <Ionicons
-              name={isActive ? tab.activeIcon : tab.icon}
-              size={22}
-              color={isActive ? '#4A56E2' : '#9CA3AF'}
-            />
-            <Text style={{ fontSize: 12, color: isActive ? '#4A56E2' : '#6B7280', fontWeight: isActive ? '700' : '500', marginTop: 2 }}>
+            <Text style={{ fontSize: 24, opacity: isActive ? 1 : 0.5 }}>{tab.label}</Text>
+            <Text style={{ fontSize: 12, fontWeight: isActive ? '700' : '400', color: isActive ? '#4F46E5' : '#6B7280' }}>
               {tab.name}
             </Text>
           </TouchableOpacity>

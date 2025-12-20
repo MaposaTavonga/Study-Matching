@@ -44,7 +44,7 @@ export default function BottomNavBar({ activeTab, onTabPress }) {
             }}
             onPress={() => {
               onTabPress(tab.name);
-              navigation.navigate(tab.name); // 👈 this triggers screen change
+              navigation.navigate(tab.name); 
             }}
             activeOpacity={0.7}
           >
