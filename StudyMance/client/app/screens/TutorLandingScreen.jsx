@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import {
-  View,
+  Platform,
   ScrollView,
   StatusBar,
   Text,
   TouchableOpacity,
-  Platform,
+  View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import TutorBottomNavBar from '../components/TutorBottomNavBar';
 
 export default function TutorLandingScreen() {

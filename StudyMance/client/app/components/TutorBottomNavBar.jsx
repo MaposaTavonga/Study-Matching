@@ -1,18 +1,17 @@
 // app/components/TutorBottomNavBar.jsx
-import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 export default function TutorBottomNavBar({ activeTab, onTabPress }) {
   const navigation = useNavigation();
 
+ 
   const tabs = [
-    { name: 'Home', label: '🏠' },
-    { name: 'Sessions', label: '📅' },
-    { name: 'Messages', label: '💬' },
-    { name: 'Profile', label: '👤' },
+    { route: '/tutor', label: '🏠', title: 'Home' },
+    { route: '/tutor/Session', label: '📅', title: 'Sessions' },
+    { route: '/tutor/messages', label: '💬', title: 'Messages' },
+    { route: '/tutor/TutorProfileScreen', label: '👤', title: 'Profile' },
   ];
-
   return (
     <View style={{
       flexDirection: 'row',
